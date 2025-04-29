@@ -1,0 +1,160 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-hollow');
+
+
+.logo {
+  max-width: 400px;
+  height: auto;
+  opacity: 0;
+  animation: logoEnter 1s ease-out forwards;
+  animation-delay: 0.3s;
+  margin-top: 0;
+}
+
+#score {
+  font-family: 'Pokemon solid', sans-serif;
+}
+
+.image-wrapper {
+  width: 300px;
+  height: 300px;
+  border: 5px solid #4d4949;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.767);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+#pokemon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0) contrast(1.5);
+  transition: filter 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+#pokemon-image.revealed {
+  filter: brightness(1) contrast(1);
+  transform: scale(1.05);
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 40px;
+  box-shadow: 0 0 25px #ffd700;
+  animation: pop 0.6s ease, glowPulse 1.2s ease-in-out infinite alternate;
+}
+
+.pulse {
+  animation: buttonPulse 0.3s ease;
+}
+
+.audio-button {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.audio-button:hover {
+  transform: scale(1.15) rotate(8deg);
+  background: linear-gradient(135deg, #adb5bd, #868e96);
+}
+
+.audio-button img {
+  width: 150%;
+  height: 150%;
+  object-fit: contain;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ee1515;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+#options button {
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoEnter {
+  0% {
+    transform: translateY(-50px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.clicked {
+  animation: buttonPulse 0.3s ease;
+}
+
+.alert-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.alert-message {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+  animation: fadeInOut 3s ease forwards;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
